@@ -31,14 +31,17 @@ export async function GetWorkSpaceService(){
     return data;
 }
 
-// export async function GetWorkSpaceService(){
+// export async function UpdateWorkSpaceService(){
 //     const session = await auth()
-//     const res = await fetch('http://96.9.81.187:8080/api/v1/workspaces?pageNo=0&pageSize=5&sortBy=workspaceId&sortDirection=ASC',{
-//         method: "DELETE",
+//     const res = await fetch('http://96.9.81.187:8080/api/v1/workspace',{
+//         method: "UPDATE",
 //         headers: {
 //             "Authorization": `Bearer ${session?.payload.token}`,
 //             "Content-Type": "application/json",
 //         },
+//         body: JSON.stringify({
+//             workspaceName: workspaceName,
+//         }),
 //     });
 //     const data = await res.json();
 //     console.log("Data in GetWorkSpaceService: ", data)

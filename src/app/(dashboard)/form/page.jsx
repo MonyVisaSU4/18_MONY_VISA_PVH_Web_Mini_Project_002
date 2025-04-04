@@ -29,14 +29,16 @@ const PopupForm = () => {
                 type="button"
                 className="bg-gray-300 text-gray-700 px-4 py-2 rounded mr-2 hover:bg-gray-400"
               >
-                Cancel
+                <Link href={`/dashboard`}>
+                  Cancel
+                </Link>
               </button>
               {/* Submit Button */}
               <button
                     type="submit"
                     className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                 >
-                    <Link href={`./dashboard`}>
+                    <Link href={`/dashboard`}>
                         Submit
                     </Link>
                 </button>

@@ -70,7 +70,9 @@ export default function LoginComponent() {
         className="text-base cursor-pointer bg-persian-green text-white py-2.5 rounded-lg w-full font-bold"
         // onClick={handleClickOnButtom}
       >
-        Login
+        <Link href={`/dashboard`}>
+          Login
+        </Link>
       </Button>
 
       {/* underline */}

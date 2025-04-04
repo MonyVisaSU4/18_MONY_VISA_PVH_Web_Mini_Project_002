@@ -1,22 +1,17 @@
-import React from 'react';
 import { Bell, Star, LogOut, MoreVertical, Plus, Clock, ChevronDown } from 'lucide-react';
+// import { GetWorkSpaceAction } from '@/actions/workspace-action';
+import { UserList } from '../../../../service/login-service';
 import Link from 'next/link';
 import { GetWorkSpaceAction } from '@/actions/workspace-action';
-import { auth } from '@/auth';
-import { UserList } from '../../../../service/login-service';
 
 const PlanItDashboard = async () => {
-  const getWorkspace = await GetWorkSpaceAction();
   const getUser = await UserList();
-  console.log("Get Work Space: ", getWorkspace.payload)
-  console.log(getUser.payload)
+  const getWorkspace = await GetWorkSpaceAction();
   return <>
     <div className="flex h-screen bg-gray-50">
       {/* Left Sidebar */}
       <div className="w-64 bg-white border-r border-gray-200 p-6 flex flex-col justify-between">
         <div>
-          {/* <h1 className="text-2xl font-bold text-gray-800 mb-8">PlanIt</h1> */}
-          
           <div className="mb-8">
             <div className="flex items-center justify-between mb-2">
               <h2 className="text-sm font-medium text-gray-500">Workspace</h2>
@@ -26,15 +21,23 @@ const PlanItDashboard = async () => {
             </div>
             
             <ul className="space-y-2">
-              {getWorkspace?.payload.map((workSpace)=>(
+            {getWorkspace?.payload.map((workSpace)=>(
                 <li key={workSpace.workspaceId}>
-                  <div className="flex items-center justify-between">
+                  <button 
+                    className="w-full 
+                               flex items-center 
+                               justify-between 
+                               cursor-pointer 
+                               hover:bg-gray-100 
+                               hover:text-blue-500"
+                    // onClick={handleId(workSpace.workspaceId)}           
+                  >
                       <div className="flex items-center">
                         <div className="w-2 h-2 rounded-full bg-red-500 mr-3"></div>
-                        <span className="text-sm font-medium text-blue-500">{workSpace.workspaceName}</span>
+                        <span className="text-sm font-medium text-black-500">{workSpace.workspaceName}</span>
                       </div>
                       <MoreVertical size={16} className="text-gray-400 rotate-90" />
-                  </div>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -43,26 +46,32 @@ const PlanItDashboard = async () => {
           <div>
             <div className="flex items-center justify-between mb-2">
               <h2 className="text-sm font-medium text-gray-500">Favorite</h2>
-              <Link href={`/`} className="text-gray-400">
-                <Star size={18} className="text-gray-400 hover:text-gray-600" />
-              </Link>
+              <div className="text-gray-400">
+                <Star size={18} className="text-gray-400" />
+              </div>
             </div>
             
             <ul className="space-y-2">
-              <li className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="w-2 h-2 rounded-full bg-red-500 mr-3"></div>
-                  <span className="text-sm font-medium text-gray-700">HRD Design</span>
-                </div>
-                <MoreVertical size={16} className="text-gray-400 rotate-90" />
-              </li>
-              <li className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="w-2 h-2 rounded-full bg-yellow-500 mr-3"></div>
-                  <span className="text-sm font-medium text-gray-700">Website Design</span>
-                </div>
-                <MoreVertical size={16} className="text-gray-400 rotate-90" />
-              </li>
+              {getWorkspace?.payload
+                .filter((workSpace) => workSpace.isFavorite)
+                .map((workSpace)=>(
+                  <li key={workSpace.workspaceId}>
+                    <div 
+                      className="w-full 
+                                flex items-center 
+                                justify-between 
+                                cursor-pointer 
+                                hover:bg-gray-100 
+                                hover:text-blue-500"
+                    >
+                        <div className="flex items-center">
+                          <div className="w-2 h-2 rounded-full bg-red-500 mr-3"></div>
+                          <span className="text-sm font-medium text-black-500">{workSpace.workspaceName}</span>
+                        </div>
+                        <MoreVertical size={16} className="text-gray-400 rotate-90" />
+                    </div>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
