@@ -18,8 +18,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             password
           }
         )
-        // console.log("Res is: ", res)
-        // console.log("Token: ", res.payload.token)
         return res
       },
     }),

@@ -3,6 +3,7 @@ import { Bell, Star, LogOut, MoreVertical, Plus, Clock, ChevronDown } from 'luci
 import { UserList } from '../../../../service/login-service';
 import Link from 'next/link';
 import { GetWorkSpaceAction } from '@/actions/workspace-action';
+// import WorkspaceShip from '@/app/(dashboard)/workSpaceList';
 
 const PlanItDashboard = async () => {
   const getUser = await UserList();
@@ -22,6 +23,7 @@ const PlanItDashboard = async () => {
             
             <ul className="space-y-2">
             {getWorkspace?.payload.map((workSpace)=>(
+                // <WorkspaceShip key={workSpace.workspaceId} id={workSpace.workspaceId} name={workSpace.workspaceName} />
                 <li key={workSpace.workspaceId}>
                   <button 
                     className="w-full 
@@ -40,6 +42,7 @@ const PlanItDashboard = async () => {
                   </button>
                 </li>
               ))}
+              
             </ul>
           </div>
           
@@ -97,7 +100,7 @@ const PlanItDashboard = async () => {
               <Bell size={20} className="text-gray-400" />
             </button>
             <div className="flex items-center">
-              <div className={`w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs mr-2 bg-[url(${getUser.payload.profile})] bg-center bg-contain bg-no-repeat`}></div>
+              <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs mr-2"></div>
               <div>
                 <div className="text-xs font-medium">{getUser.payload.username}</div>
                 <div className="text-xs text-gray-400">{getUser.payload.email}</div>

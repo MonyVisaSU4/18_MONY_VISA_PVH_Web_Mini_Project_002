@@ -7,24 +7,9 @@ import Link from "next/link";
 import React from "react";
 
 export default function LoginComponent() {
-  // {OnEmailChange, OnPasswordChange, OnClickButton}
-  // const handleEmailChange = (e) => {
-  //   OnEmailChange(e.target.value);	
-  // }
-  // const handlePasswordChange = (e) => {
-  //   OnPasswordChange(e.target.value);
-  // };
-  // const handleClickOnButtom = () => {
-  //   OnClickButton(true);
-  // }
-  // const handleFormSubmit = (e) => {
-  //   e.preventDefault(); 
-  //   OnClickButton(true); 
-  // };
   return (
     <form className="space-y-6 bg-white" 
           action={LoginAction}
-          // onSubmit={handleFormSubmit}
     >
       {/* email */}
       <div>
@@ -41,7 +26,6 @@ export default function LoginComponent() {
           id="email"
           placeholder="Please type your email"
           className={`bg-ghost-white py-2.5 px-4 rounded-lg w-full text-light-steel-blue/90`}
-          // onChange={handleEmailChange}
         />
       </div>
 
@@ -60,7 +44,6 @@ export default function LoginComponent() {
           id="password"
           placeholder="Please type your password"
           className={`bg-ghost-white py-2.5 px-4 rounded-lg w-full text-light-steel-blue/90`}
-          // onChange={handlePasswordChange}
         />
       </div>
 
@@ -68,7 +51,6 @@ export default function LoginComponent() {
       <Button
         type="submit"
         className="text-base cursor-pointer bg-persian-green text-white py-2.5 rounded-lg w-full font-bold"
-        // onClick={handleClickOnButtom}
       >
         <Link href={`/dashboard`}>
           Login
